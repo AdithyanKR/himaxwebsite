@@ -5,7 +5,7 @@ import { siteConfig } from "@/config/content";
 
 export default function Testimonials() {
     return (
-        <section id="testimonials" className="py-24 px-4 md:px-8 bg-[#0a0a0a] text-white relative z-20">
+        <section id="testimonials" className="py-24 px-6 md:px-8 bg-[#0a0a0a] text-white relative z-20">
             <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-16 md:mb-24">
                     <h2 className="font-serif text-4xl md:text-6xl text-white mb-6">

@@ -6,7 +6,7 @@ import { siteConfig } from "@/config/content";
 
 export default function About() {
     return (
-        <section id="about" className="py-24 px-4 md:px-8 bg-white text-[#0a0a0a] overflow-hidden relative z-20">
+        <section id="about" className="py-24 px-6 md:px-8 bg-white text-[#0a0a0a] overflow-hidden relative z-20">
             <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-16">
 
                 {/* Left Side: Philosophy Text */}
@@ -27,7 +27,7 @@ export default function About() {
                     <p className="text-[#555] text-base md:text-lg leading-relaxed font-light mb-6">
                         {siteConfig.about.description2}
                     </p>
-                    <a href="#services" className="inline-block px-8 py-3 bg-[var(--color-brand-dark-green)] text-white text-sm tracking-widest uppercase hover:bg-[var(--color-brand-lime)] hover:text-[#0a0a0a] transition-colors rounded-sm font-semibold">
+                    <a href="#services" className="inline-block px-8 py-4 md:py-3 bg-[var(--color-brand-dark-green)] text-white text-sm tracking-widest uppercase hover:bg-[var(--color-brand-lime)] hover:text-[#0a0a0a] transition-colors rounded-sm font-semibold">
                         {siteConfig.about.buttonText}
                     </a>
                 </motion.div>

@@ -71,6 +71,15 @@ export default function ScrollyCanvas({ children }: { children?: React.ReactNode
             offsetY = (canvas.height - drawHeight) / 2;
         }
 
+        // Feature: Scale down images on mobile screens while keeping them centered.
+        if (window.innerWidth < 768) {
+            const scaleFactor = 0.6; // 60% of original cover size on mobile
+            drawWidth *= scaleFactor;
+            drawHeight *= scaleFactor;
+            offsetX = (canvas.width - drawWidth) / 2;
+            offsetY = (canvas.height - drawHeight) / 2;
+        }
+
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
     };

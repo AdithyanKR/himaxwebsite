@@ -5,7 +5,7 @@ import { siteConfig } from "@/config/content";
 
 export default function Services() {
     return (
-        <section id="services" className="py-24 px-4 md:px-8 bg-[#f9f9f9] text-[#0a0a0a] relative z-20">
+        <section id="services" className="py-24 px-6 md:px-8 bg-[#f9f9f9] text-[#0a0a0a] relative z-20">
             <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-16 md:mb-24">
                     <h2 className="font-serif text-4xl md:text-6xl text-[var(--color-brand-dark-green)] mb-6">
@@ -39,7 +39,7 @@ export default function Services() {
                                 {service.description}
                             </p>
                             
-                            <a href="#book" className="text-sm font-semibold tracking-widest uppercase text-[var(--color-brand-dark-green)] group-hover:text-[var(--color-brand-lime)] transition-colors flex items-center gap-2">
+                            <a href="#book" className="inline-flex py-3 text-sm font-semibold tracking-widest uppercase text-[var(--color-brand-dark-green)] group-hover:text-[var(--color-brand-lime)] transition-colors items-center gap-2">
                                 Learn More
                                 <span className="group-hover:translate-x-1 transition-transform">→</span>
                             </a>

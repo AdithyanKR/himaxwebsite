@@ -35,7 +35,7 @@ export default function Contact() {
     };
 
     return (
-        <section id="book" className="py-24 px-4 md:px-8 bg-white text-[#0a0a0a] relative z-20">
+        <section id="book" className="py-24 px-6 md:px-8 bg-white text-[#0a0a0a] relative z-20">
             <div className="max-w-4xl mx-auto">
                 <div className="text-center mb-16">
                     <h2 className="font-serif text-4xl md:text-5xl text-[var(--color-brand-dark-green)] mb-4">Book a Service</h2>
@@ -145,7 +145,7 @@ export default function Contact() {
                         <div className="pt-4 text-center">
                             <button
                                 type="submit"
-                                className="w-full md:w-auto px-12 py-4 bg-[var(--color-brand-dark-green)] text-white font-semibold uppercase tracking-widest hover:bg-[var(--color-brand-lime)] hover:text-[#0a0a0a] transition-colors rounded-sm shadow-xl hover:shadow-[var(--color-brand-lime)]/20"
+                                className="w-full md:w-auto px-12 py-5 bg-[var(--color-brand-dark-green)] text-white font-semibold uppercase tracking-widest hover:bg-[var(--color-brand-lime)] hover:text-[#0a0a0a] transition-colors rounded-sm shadow-xl hover:shadow-[var(--color-brand-lime)]/20"
                             >
                                 Request Booking
                             </button>

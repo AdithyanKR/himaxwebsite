@@ -48,34 +48,34 @@ export default function ScrollyCanvas({ children }: { children?: React.ReactNode
         if (!ctx) return;
 
         const img = images[index];
-
-        // Synchronize internal canvas resolution to the actual window size
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        // Scale image maintaining aspect ratio and covering the entire canvas (like object-fit: cover)
         const imgRatio = img.width / img.height;
         const canvasRatio = canvas.width / canvas.height;
 
         let drawWidth, drawHeight, offsetX, offsetY;
 
-        if (imgRatio > canvasRatio) {
-            drawHeight = canvas.height;
-            drawWidth = img.width * (canvas.height / img.height);
-            offsetX = (canvas.width - drawWidth) / 2;
-            offsetY = 0;
-        } else {
-            drawWidth = canvas.width;
-            drawHeight = img.height * (canvas.width / img.width);
-            offsetX = 0;
-            offsetY = (canvas.height - drawHeight) / 2;
-        }
-
-        // Feature: Scale down images on mobile screens while keeping them centered.
         if (window.innerWidth < 768) {
-            const scaleFactor = 0.6; // 60% of original cover size on mobile
-            drawWidth *= scaleFactor;
-            drawHeight *= scaleFactor;
+            // Mobile: Exact Contain (Scale to fit without cropping)
+            if (imgRatio > canvasRatio) {
+                drawWidth = canvas.width;
+                drawHeight = canvas.width / imgRatio;
+            } else {
+                drawHeight = canvas.height;
+                drawWidth = canvas.height * imgRatio;
+            }
+            offsetX = (canvas.width - drawWidth) / 2;
+            offsetY = (canvas.height - drawHeight) / 2;
+        } else {
+            // Desktop: Cover (Fill entire screen)
+            if (imgRatio > canvasRatio) {
+                drawHeight = canvas.height;
+                drawWidth = img.width * (canvas.height / img.height);
+            } else {
+                drawWidth = canvas.width;
+                drawHeight = img.height * (canvas.width / img.width);
+            }
             offsetX = (canvas.width - drawWidth) / 2;
             offsetY = (canvas.height - drawHeight) / 2;
         }
@@ -110,17 +110,33 @@ export default function ScrollyCanvas({ children }: { children?: React.ReactNode
     }, [loaded, frameIndex]);
 
     return (
-        <div ref={containerRef} className="relative h-[600vh] w-full bg-[#0a0a0a]">
+        <div ref={containerRef} className="relative h-[600vh] w-full bg-[#f4eade] md:bg-[#0a0a0a]">
+            {/* Ambient Base color matches the sandy vibe of the render, dissolving the harsh 'black space' on mobile */}
             <div className="sticky top-0 h-screen w-full overflow-hidden">
                 {!loaded && (
-                    <div className="absolute inset-0 flex items-center justify-center bg-[#0a0a0a] z-50 text-white font-serif text-2xl tracking-widest">
+                    <div className="absolute inset-0 flex items-center justify-center bg-[#f4eade] md:bg-[#0a0a0a] z-50 text-[var(--color-brand-dark-green)] md:text-white font-serif text-2xl tracking-widest">
                         LANDSCAPE
                     </div>
                 )}
+                
+                {/* Ambient Blurred Copy to completely blend edges on mobile */}
+                {loaded && (
+                    <div 
+                        className="absolute inset-0 md:hidden scale-110 blur-3xl opacity-60 pointer-events-none"
+                        style={{ 
+                            backgroundImage: `url(${images[Math.round(frameIndex.get())]?.src || currentFrame(0)})`,
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center',
+                            transition: 'background-image 0.1s linear'
+                        }}
+                    />
+                )}
+
                 <canvas
                     ref={canvasRef}
-                    className="absolute inset-0 w-full h-full object-cover"
+                    className="absolute inset-0 w-full h-full md:object-cover"
                 />
+                
                 <div className="absolute inset-0 z-10 pointer-events-none">
                     {loaded && children}
                 </div>

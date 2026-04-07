@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
+import Preloader from "@/components/Preloader";
 
 const cormorant = Cormorant_Garamond({
   weight: ["300", "400", "500", "600", "700"],
@@ -26,6 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${cormorant.variable} ${inter.variable} font-sans antialiased bg-[#0a0a0a] text-[#ededed]`}>
+        <Preloader />
         {children}
       </body>
     </html>

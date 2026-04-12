@@ -21,19 +21,29 @@ export default function ScrollyCanvas({ children }: { children?: React.ReactNode
     const frameIndex = useTransform(scrollYProgress, [0, 1], [0, FRAME_COUNT - 1]);
 
     useEffect(() => {
-        // Preload all 192 images
-        let loadedCount = 0;
         const imgArray: HTMLImageElement[] = [];
+        let hasTriggeredLoad = false;
 
         for (let i = 0; i < FRAME_COUNT; i++) {
             const img = new Image();
             img.src = currentFrame(i);
+            
+            // Let the UI render as soon as the first frame fetches successfully
             img.onload = () => {
-                loadedCount++;
-                if (loadedCount === FRAME_COUNT) {
+                if (!hasTriggeredLoad) {
+                    hasTriggeredLoad = true;
                     setLoaded(true);
                 }
             };
+
+            // Prevent indefinite loading state if a file gets 404'd or ad-blocked
+            img.onerror = () => {
+                if (!hasTriggeredLoad) {
+                    hasTriggeredLoad = true;
+                    setLoaded(true);
+                }
+            };
+
             // For immediate caching
             imgArray.push(img);
         }
@@ -43,11 +53,14 @@ export default function ScrollyCanvas({ children }: { children?: React.ReactNode
     const drawFrame = (index: number) => {
         if (!images[index] || !canvasRef.current) return;
 
+        const img = images[index];
+        // Ensure image is fully downloaded before attempting to draw onto canvas
+        if (!img.complete || img.naturalWidth === 0) return;
+
         const canvas = canvasRef.current;
         const ctx = canvas.getContext("2d");
         if (!ctx) return;
 
-        const img = images[index];
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 

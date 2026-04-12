@@ -46,31 +46,31 @@ export const siteConfig = {
                 id: 1,
                 title: "",
                 tag: "",
-                image: "1.JPG"
+                image: "/1.JPG"
             },
             {
                 id: 2,
                 title: "",
                 tag: "",
-                image: "2.jpg"
+                image: "/2.JPG"
             },
             {
                 id: 3,
                 title: "",
                 tag: " ",
-                image: "3.jpg"
+                image: "/3.JPG"
             },
             {
                 id: 4,
                 title: "",
                 tag: "",
-                image: "4.jpg"
+                image: "/4.JPG"
             },
             {
                 id: 5,
                 title: "",
                 tag: "",
-                image: "5.jpg"
+                image: "/5.JPG"
             },
         ]
     },

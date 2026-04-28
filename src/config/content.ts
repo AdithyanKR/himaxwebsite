@@ -10,7 +10,7 @@ export const siteConfig = {
         title: "About HI MAX Landscape",
         description1: "We transform exterior spaces into breathtaking, premium sanctuaries. With an uncompromising eye for detail, our expert team designs, executes, and maintains luxury landscapes across Dubai and Abu Dhabi.",
         description2: "Whether it's a sophisticated modern villa layout, exclusive event greenery, or meticulous garden care, HI MAX LANDSCAPE brings lush, vibrant life to your environment.",
-        image: "/about img.jpg",
+        image: "/about img.webp",
         buttonText: "Discover More",
     },
     services: {
@@ -52,7 +52,7 @@ export const siteConfig = {
                 id: 2,
                 title: "",
                 tag: "",
-                image: "/2.JPG"
+                image: "/7.jpg"
             },
             {
                 id: 3,

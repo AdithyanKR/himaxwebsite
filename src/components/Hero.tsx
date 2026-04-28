@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform, useScroll } from "framer-motion";
 import { Search, ChevronDown } from "lucide-react";
 import React from "react";
 
@@ -16,7 +16,15 @@ export default function Hero() {
   const bgRotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["5deg", "-5deg"]);
   const bgRotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-5deg", "5deg"]);
 
+  // Scroll-triggered animation synced with native scroll logic
+  const { scrollY } = useScroll();
+  const bgY = useTransform(scrollY, [0, 1000], [0, 300]);
+  const smoothBgY = useSpring(bgY, { stiffness: 100, damping: 30, restDelta: 0.001 });
+
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    // Mobile fallback: disable high-intensity 3D calculations on touch/small screens
+    if (window.matchMedia("(max-width: 768px)").matches) return;
+
     const rect = e.currentTarget.getBoundingClientRect();
     const width = rect.width;
     const height = rect.height;
@@ -47,9 +55,10 @@ export default function Hero() {
         style={{
           rotateX: bgRotateX,
           rotateY: bgRotateY,
-          scale: 1.1,
+          y: smoothBgY,
+          scale: 1.15, // Increased slightly to prevent edges showing during parallax
           transformStyle: "preserve-3d",
-          backgroundImage: "url(/DP.jpg)",
+          backgroundImage: "url(/DP.webp)",
           backgroundSize: "cover",
           backgroundPosition: "center"
         }}

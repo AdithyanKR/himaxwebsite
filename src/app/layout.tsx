@@ -17,6 +17,9 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Hi Max Landscape — Luxury Garden & Exterior Design",
   description: "Transforming desert landscapes into lush green sanctuaries.",
+  icons: {
+    icon: "/hi max logo.png",
+  },
 };
 
 export default function RootLayout({

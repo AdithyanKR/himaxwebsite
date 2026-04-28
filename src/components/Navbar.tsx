@@ -20,10 +20,9 @@ export default function Navbar() {
             initial={{ y: -100 }}
             animate={{ y: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className={`fixed left-0 right-0 mx-auto z-50 flex items-center justify-between transition-all duration-500 w-[95%] md:w-[90%] max-w-7xl ${isScrolled
-                ? "top-4 py-4 px-6 md:px-10 bg-white/95 backdrop-blur-3xl saturate-150 border border-gray-200 shadow-[0_8px_32px_rgba(0,0,0,0.08)] rounded-2xl md:rounded-full"
-                : "top-0 py-6 px-6 md:px-12 bg-transparent"
-                }`}
+            className={`fixed top-4 left-0 right-0 mx-auto z-50 flex items-center justify-between transition-all duration-500 w-[95%] md:w-[90%] max-w-7xl py-4 px-6 md:px-10 bg-white/5 backdrop-blur-xl saturate-150 border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.3)] rounded-2xl md:rounded-full ${
+                isScrolled ? "bg-white/10 border-white/20" : ""
+            }`}
         >
             <div className="flex items-center">
                 <a href="#" className="h-10 md:h-12 w-auto flex items-center justify-center relative z-20">
@@ -43,7 +42,7 @@ export default function Navbar() {
             </div>
 
             {/* Desktop Links (Hidden on Mobile) */}
-            <div className={`hidden md:flex items-center gap-8 font-sans text-xs tracking-[0.2em] uppercase transition-colors duration-500 ${isScrolled ? "text-gray-800" : "text-white/80"}`}>
+            <div className="hidden md:flex items-center gap-8 font-sans text-xs tracking-[0.2em] uppercase transition-colors duration-500 text-white/90">
                 <a href="#about" className="py-2 hover:text-[var(--color-brand-lime)] transition-colors">About</a>
                 <a href="#services" className="py-2 hover:text-[var(--color-brand-lime)] transition-colors">Services</a>
                 <a href="#projects" className="py-2 hover:text-[var(--color-brand-lime)] transition-colors">Projects</a>

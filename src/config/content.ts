@@ -124,10 +124,10 @@ export const siteConfig = {
         // },
         abuDhabi: {
             title: "Abu Dhabi Office",
-            address1: "Al Doum street ,",
-            address2: "al mina irani market flower shop no 51",
+            address1: "Al mina, al Doum street",
+            address2: "",
             phone: "+971 55 161 9241",
-            email: "himaxlandscape51@gmail.com"
+            email: "info@himaxlandscape.com"
         },
         hours: [
             { day: "Mon - Fri", time: "9:00 AM - 6:00 PM" },

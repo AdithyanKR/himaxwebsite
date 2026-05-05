@@ -29,8 +29,8 @@ export default function Footer() {
                         <address className="not-italic text-gray-400 font-light text-sm space-y-4">
                             <p>
                                 <span className="block text-white mb-1">Branch Hub</span>
-                                {siteConfig.contact.abuDhabi.address1}<br />
-                                {siteConfig.contact.abuDhabi.address2}
+                                {siteConfig.contact.abuDhabi.address1}
+                                {siteConfig.contact.abuDhabi.address2 && <><br />{siteConfig.contact.abuDhabi.address2}</>}
                             </p>
                             <p>
                                 <span className="block text-white mb-1">Contact</span>

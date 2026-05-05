@@ -46,32 +46,38 @@ export const siteConfig = {
                 id: 1,
                 title: "",
                 tag: "",
-                image: "/1.JPG"
+                image: "/pr1.png"
             },
             {
                 id: 2,
                 title: "",
                 tag: "",
-                image: "/7.JPG"
+                image: "/pr2.png"
             },
             {
                 id: 3,
                 title: "",
-                tag: " ",
-                image: "/3.JPG"
+                tag: "",
+                image: "/pr3.png"
             },
             {
                 id: 4,
                 title: "",
                 tag: "",
-                image: "/4.JPG"
+                image: "/pr4.png"
             },
             {
                 id: 5,
                 title: "",
                 tag: "",
-                image: "/5.JPG"
+                image: "/pr5.png"
             },
+            {
+                id: 6,
+                title: "",
+                tag: "",
+                image: "/pr6.png"
+            }
         ]
     },
     partners: {

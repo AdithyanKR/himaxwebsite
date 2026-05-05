@@ -52,7 +52,7 @@ export const siteConfig = {
                 id: 2,
                 title: "",
                 tag: "",
-                image: "/7.jpg"
+                image: "/7.JPG"
             },
             {
                 id: 3,
